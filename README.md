@@ -105,7 +105,6 @@ This project is licensed under the MIT License.
 
 ## Resources
 
-- [Hugging Face Inference API](https://huggingface.co/docs/inference-api/serverless)
 - [Hugging Face Blog: Inference for PROs](https://huggingface.co/blog/inference-pro)
 - [Hugging Face Inference API Documentation](https://huggingface.co/docs/huggingface_hub/main/en/package_reference/inference_client#huggingface_hub.InferenceApi)
 - [Hugging Face Substribe to Pro](https://huggingface.co/subscribe/pro)

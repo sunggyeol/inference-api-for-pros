@@ -13,10 +13,22 @@ The Hugging Face Inference API for PRO users provides several benefits, includin
 
 This repository includes examples for using some of the most powerful models available to PRO users, such as:
 
-- **Meta Llama 3.1 405B:** High-quality multilingual chat model.
-- **Code Llama:** For code completion and infilling tasks.
-- **Stable Diffusion XL:** Image generation using diffusion models.
-- **Bark:** Text-to-audio generation.
+| Model                                  | Endpoint                 | Size         | Context Length | Use                                                |
+|----------------------------------------|--------------------------|--------------|----------------|----------------------------------------------------|
+| **Meta Llama 3.1 405B Instruct FP8**   | `meta-llama/Meta-Llama-3.1-405B-Instruct-FP8`   | 405B         | 128k tokens    | High-quality multilingual chat model with large context length |
+| **Meta Llama 3 Instruct (8B)**         | `meta-llama/Meta-Llama-3-8B-Instruct`       | 8B           | 8k tokens      | One of the best chat models                        |
+| **Meta Llama 3 Instruct (70B)**        | `meta-llama/Meta-Llama-3-70B-Instruct`      | 70B          | 8k tokens      | One of the best chat models                        |
+| **Mixtral 8x7B Instruct**              | `mistralai/Mixtral-8x7B-Instruct-v0.1` | 45B MOE      | 32k tokens     | Performance comparable to top proprietary models   |
+| **Nous Hermes 2 Mixtral 8x7B DPO**     | `NousResearch/Nous-Hermes-2-Mixtral-8x7B-DPO` | 45B MOE      | 32k tokens     | Further trained over Mixtral 8x7B MoE              |
+| **Zephyr 7B β**                        | `HuggingFaceH4/zephyr-7b-beta`        | 7B           | 4k tokens      | One of the best chat models at the 7B weight       |
+| **Llama 2 Chat (7B)**                  | `meta-llama/Llama-2-7b-chat-hf`       | 7B           | 4k tokens      | One of the best conversational models              |
+| **Llama 2 Chat (13B)**                 | `meta-llama/Llama-2-13b-chat-hf`      | 13B          | 4k tokens      | One of the best conversational models              |
+| **Mistral 7B Instruct v0.2**           | `mistralai/Mistral-7B-Instruct-v0.2`   | 7B           | 4k tokens      | One of the best chat models at the 7B weight       |
+| **Code Llama Base (7B)**               | `codellama/CodeLlama-7b-hf`    | 7B           | 4k tokens      | Autocomplete and infill code                       |
+| **Code Llama Base (13B)**              | `codellama/CodeLlama-13b-hf`   | 13B          | 4k tokens      | Autocomplete and infill code                       |
+| **Code Llama Instruct**                | `codellama/CodeLlama-7b-hf`   | 34B          | 16k tokens     | Conversational code assistant                      |
+| **Stable Diffusion XL**                | `stabilityai/stable-diffusion-xl-base-1.0`   | 3B UNet      | -              | Generate images                                    |
+| **Bark**                               | `suno/bark`                  | 0.9B         | -              | Text to audio generation                           |
 
 ## Getting Started
 
@@ -54,46 +66,6 @@ To use the PRO features, you'll need to authenticate with your PRO account token
   # Log in using your token
   client = InferenceClient(token="YOUR_PRO_TOKEN")
   ```
-
-### Usage Examples
-
-#### Text Generation with Meta Llama
-
-```python
-from huggingface_hub import InferenceClient
-
-client = InferenceClient(
-    "meta-llama/Meta-Llama-3-8B-Instruct",
-    token="hf_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
-)
-
-for message in client.chat_completion(
-	messages=[{"role": "user", "content": "What is the capital of France?"}],
-	max_tokens=500,
-	stream=True,
-):
-    print(message.choices[0].delta.content, end="")
-```
-
-#### Image Generation with Stable Diffusion XL
-
-```python
-import requests
-
-API_URL = "https://api-inference.huggingface.co/models/stabilityai/stable-diffusion-xl-base-1.0"
-headers = {"Authorization": "Bearer hf_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"}
-
-def query(payload):
-	response = requests.post(API_URL, headers=headers, json=payload)
-	return response.content
-image_bytes = query({
-	"inputs": "Astronaut riding a horse",
-})
-# You can access the image with PIL.Image for example
-import io
-from PIL import Image
-image = Image.open(io.BytesIO(image_bytes))
-```
 
 ### Contributing
 

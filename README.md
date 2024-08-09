@@ -1,4 +1,4 @@
-# Hugging Face Inference API Playground
+# Hugging Face Inference API for PROs Playground
 An interactive playground to explore and experiment with the Hugging Face Inference API for PRO users. This repository showcases how to leverage the enhanced capabilities available to PRO users, such as increased rate limits and access to state-of-the-art models for various machine learning tasks.
 
 ## Overview

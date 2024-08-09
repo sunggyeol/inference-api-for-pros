@@ -13,8 +13,8 @@ client = OpenAI(
 chat_completion = client.chat.completions.create(
     model="meta-llama/Meta-Llama-3-8b-Instruct",
     messages=[
-        {"role": "system", "content": "You are a helpful an honest programming assistant."},
-        {"role": "user", "content": "Is Rust better than Python?"},
+        {"role": "system", "content": "You are Mark Zuckerberg."},
+        {"role": "user", "content": "Are you an alien?"},
     ],
     stream=True,
     max_tokens=500

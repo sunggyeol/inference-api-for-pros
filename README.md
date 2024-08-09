@@ -36,36 +36,44 @@ This repository includes examples for using some of the most powerful models ava
 
 - A Hugging Face PRO subscription to access the exclusive features and models.
 - Python 3.7 or later installed on your system.
-- `huggingface_hub` Python library for easy API integration.
 
 ### Installation
 
 1. Clone this repository:
 
    ```bash
-   git clone https://github.com/sunggyeol/huggingface-playground.git
-   cd huggingface-playground
+   git clone https://github.com/sunggyeol/inference-api-for-pros-playground.git
+   cd inference-api-for-pros-playground 
    ```
 
 2. Install the necessary Python packages:
 
    ```bash
-   pip install huggingface_hub
+   pip install requirements.txt
    ```
 
-### Authentication
+3. **Get Your Hugging Face Token and Create a `.env` File**:
 
-To use the PRO features, you'll need to authenticate with your PRO account token:
+   - **Obtain Token**: 
+     - Go to [Hugging Face](https://huggingface.co) and log in.
+     - Go to the model’s page (e.g., https://huggingface.co/meta-llama/Meta-Llama-3.1-8B-Instruct).
+     - Agree to share your contact information to get access to the model.
+     - Navigate to `Settings` > `Access Tokens` and create a new token.
+     - Update Permissions
+         - Inference: Make calls to the serverless Inference API
+         - Repositories permissions: Read access to contents of selected repos
+         - Read access to contents of selected repos
+     - Copy the generated token.
 
-- Obtain your token from the Hugging Face account settings.
-- Authenticate using the `huggingface_hub` library:
+   - **Create `.env` File**:
+     - In the root directory of your project, create a `.env` file.
+     - Add the following line to the `.env` file:
 
-  ```python
-  from huggingface_hub import InferenceClient
+       ```bash
+       HUGGINGFACE_ACCESS_TOKEN=your_token_here
+       ```
+     - Replace `your_token_here` with the token you copied.
 
-  # Log in using your token
-  client = InferenceClient(token="YOUR_PRO_TOKEN")
-  ```
 
 ### Contributing
 

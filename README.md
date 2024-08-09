@@ -1,5 +1,5 @@
-# Hugging Face Inference API for PROs Playground
-An interactive playground to explore and experiment with the Hugging Face Inference API for PRO users. This repository showcases how to leverage the enhanced capabilities available to PRO users, such as increased rate limits and access to state-of-the-art models for various machine learning tasks.
+# Hugging Face Inference API for PROs
+Explore and experiment with the Hugging Face Inference API for PRO users. This repository showcases how to leverage the enhanced capabilities available to PRO users, such as increased rate limits and access to state-of-the-art models for various machine learning tasks.
 
 ## Overview
 
@@ -42,8 +42,8 @@ This repository includes examples for using some of the most powerful models ava
 1. Clone this repository:
 
    ```bash
-   git clone https://github.com/sunggyeol/inference-api-for-pros-playground.git
-   cd inference-api-for-pros-playground 
+   git clone https://github.com/sunggyeol/inference-api-for-pros.git
+   cd inference-api-for-pros 
    ```
 
 2. Install the necessary Python packages:

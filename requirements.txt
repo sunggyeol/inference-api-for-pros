@@ -1,3 +1,5 @@
-huggingface_hub==0.23.4
+huggingface_hub==0.24.5
+langchain_core==0.2.29
+langchain_huggingface==0.0.3
 openai==1.40.2
 python-dotenv==1.0.1

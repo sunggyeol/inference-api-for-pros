@@ -15,18 +15,22 @@ prompt2 = ChatPromptTemplate.from_template(
     "What country is the city {city} in? Respond in {language}."
 )
 
-repo_id = "meta-llama/Meta-Llama-3-70B-Instruct"
+repo_id = "NousResearch/Nous-Hermes-2-Mixtral-8x7B-DPO"
 
-llm = HuggingFaceEndpoint(
+model = HuggingFaceEndpoint(
     repo_id=repo_id,
     huggingfacehub_api_token=HUGGINGFACEHUB_API_KEY,
 )
 
-chain1 = prompt1 | llm | StrOutputParser()
+chain1 = prompt1 | model | StrOutputParser()
 
+chain2 = (
+    {"city": chain1, "language": itemgetter("language")}
+    | prompt2
+    | model
+    | StrOutputParser()
+)
 
-chain2_input = {"city": chain1, "language": "spanish"}
-chain2 = prompt2 | llm | StrOutputParser()
+output = chain2.invoke({"person": "obama", "language": "spanish"})
 
-country_result = chain2.invoke(chain2_input)
-country = country_result.strip()
+print(output)
